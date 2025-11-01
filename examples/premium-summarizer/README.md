@@ -4,11 +4,12 @@ A Next.js web application demonstrating the **monad-x402** SDK's ability to prot
 
 ## 🌟 Features
 
-- **Payment-Gated API**: All API endpoints protected by monad-x402 middleware
-- **Bot Detection**: AI scrapers and bots must pay before accessing data
+- **Full Page Protection**: Homepage AND API endpoints protected by monad-x402 middleware
+- **Bot Detection**: AI scrapers (like GPT, Claude) and bots must pay before accessing ANY content
 - **Blockchain Verified**: Payments verified on Monad testnet
 - **Beautiful UI**: Modern, responsive interface built with Next.js 15 and Tailwind CSS
 - **Real-time Crypto Data**: Display cryptocurrency prices with filtering capabilities
+- **Multi-tier Pricing**: Different prices for homepage (500k wei) vs API access (750k wei)
 
 ## 🚀 How It Works
 
@@ -81,17 +82,32 @@ premium-summarizer/
 └── README.md                        # This file
 ```
 
-## 🔐 Protected Endpoints
+## 🔐 Protected Routes
+
+### `/` (Homepage)
+
+**Price**: 500,000 wei (on testnet)  
+**Network**: Monad testnet  
+**Description**: Access to protected crypto data homepage  
+**Content Type**: HTML
+
+**Test Protection**:
+```bash
+curl http://localhost:3000/
+# Returns: 402 Payment Required
+```
 
 ### `/api/premium/summarize`
 
 **Price**: 750,000 wei (on testnet)  
 **Network**: Monad testnet  
-**Description**: Premium cryptocurrency market data
+**Description**: Premium cryptocurrency market data  
+**Content Type**: JSON
 
 **GET Request**:
 ```bash
 curl http://localhost:3000/api/premium/summarize
+# Returns: 402 Payment Required
 ```
 
 **POST Request** (for specific crypto):
@@ -99,9 +115,10 @@ curl http://localhost:3000/api/premium/summarize
 curl -X POST http://localhost:3000/api/premium/summarize \
   -H "Content-Type: application/json" \
   -d '{"symbol": "ETH"}'
+# Returns: 402 Payment Required
 ```
 
-**Note**: Bots and AI scrapers attempting to access these endpoints will receive a payment request and must complete payment before receiving data.
+**Note**: AI scrapers (GPT, Claude, etc.) and bots attempting to access ANY route will receive a payment request and must complete payment before receiving data.
 
 ## 🎨 Customization
 
