@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd examples/premium-summarizer && npm install && npm run build",
+  "devCommand": "cd examples/premium-summarizer && npm run dev",
+  "installCommand": "cd examples/premium-summarizer && npm install",
+  "framework": "nextjs",
+  "outputDirectory": "examples/premium-summarizer/.next"
+}
