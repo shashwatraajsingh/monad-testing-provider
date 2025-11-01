@@ -1,7 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd examples/premium-summarizer && npm install && npm run build",
-  "outputDirectory": "examples/premium-summarizer/.next",
-  "framework": "nextjs",
-  "installCommand": "cd examples/premium-summarizer && npm install"
-}
